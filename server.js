@@ -2,6 +2,57 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 var telegram = require("natsvora-telegram-bot-api");
 
+const fetch = require("node-fetch");
+
+const wakeUpDyno = (url, interval = 25, callback) => {
+    const milliseconds = interval * 60000;
+    setTimeout(() => {
+
+        try { 
+            console.log(`setTimeout called.`);
+            // HTTP GET request to the dyno's url
+            fetch(url).then(() => console.log(`Fetching ${url}.`)); 
+        }
+        catch (err) { // catch fetch errors
+            console.log(`Error fetching ${url}: ${err.message} 
+            Will try again in ${interval} minutes...`);
+        }
+        finally {
+
+            try {
+                callback(); // execute callback, if passed
+            }
+            catch (e) { // catch callback error
+                callback ? console.log("Callback failed: ", e.message) : null;
+            }
+            finally {
+                // do it all again
+                return wakeUpDyno(url, interval, callback);
+            }
+            
+        }
+
+    }, milliseconds);
+};
+
+// heroku specific
+const express = require("express"); 
+
+const PORT = process.env.PORT; 
+const DYNO_URL = "https://filc-bridge-bot.herokuapp.com/"; //dyno url
+
+const app = express();
+app.get("/", function(req, res) {
+  res.send("Hello world! you have reached the secret inner workings of the FILC BOT");
+});
+app.listen(PORT, () => {
+    wakeUpDyno(DYNO_URL); // will start once server starts
+})
+
+const Discord = require("discord.js");
+const client = new Discord.Client();
+var telegram = require("natsvora-telegram-bot-api");
+
 // import env variables
 var telegram_token = process.env.TELEGRAM_BOT_TOKEN
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN
