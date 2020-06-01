@@ -1,5 +1,4 @@
-const client = new Discord.Client();
-var telegram = require("natsvora-telegram-bot-api");
+
 
 const fetch = require("node-fetch");
 
