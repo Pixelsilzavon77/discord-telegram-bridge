@@ -39,7 +39,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
 const express = require("express"); 
 
 const PORT = process.env.PORT; 
-const DYNO_URL = "https://filc-bridge-bot.herokuapp.com/"; //dyno url
+const DYNO_URL = process.env.DYNO_URL || "https://google.com"; //dyno url
 
 const app = express();
 app.get("/", function(req, res) {
