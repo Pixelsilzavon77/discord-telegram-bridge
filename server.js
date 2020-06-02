@@ -117,7 +117,7 @@ api.on("message", function(message) {
               document.then(function(data) {
                 var document_url =
                   "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
-                webhookClient.send(message.text, {
+                webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
                   files: [document_url]
@@ -129,7 +129,7 @@ api.on("message", function(message) {
               photo.then(function(data) {
                 var photo_url =
                   "https://api.telegram.org/file/bot" + telegram_token +"/" +data.file_path;
-                webhookClient.send(message.text, {
+                webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
                   files: [photo_url]
