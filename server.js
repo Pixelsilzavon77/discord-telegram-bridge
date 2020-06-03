@@ -83,14 +83,17 @@ client.on("message", message => {
     message.channel.id == discord_channel_id &&
     message.author.bot == false
   ) {
+    let mentioned_usernames = []
+for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[1].username)}
     var attachment_urls = []
     for(let attachment of message.attachments){
-    	attachment_urls.push(attachment[1].url)
+      attachment_urls.push(attachment[1].url)
     }
     // attachment_urls is empty when there are no attachments so we can be just lazy
+    var final_message_content = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
       chat_id: telegram_chat_id,
-      text: message.author.username + ": "+message.content + " "+ attachment_urls.join(' ')
+      text: message.author.username + ": "+final_message_content + " "+ attachment_urls.join(' ') + mentioned_usernames.join(" ")
     });
  
   }
