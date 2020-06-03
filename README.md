@@ -2,7 +2,7 @@
 Discord-Telegram-bridge
 </h1>
 <p align="center">
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/daaniiieel/discord-telegram-bridge?style=for-the-badge"><img alt="badge count" src="https://img.shields.io/badge/badges-5-success?style=for-the-badge">
+<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="badge count" src="https://img.shields.io/badge/badges-5-success?style=for-the-badge">
  </p>
 A small and fast telegram to discord chat bridge, written in node 
 
