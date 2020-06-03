@@ -1,7 +1,9 @@
 <h1 align="center"> 
 Discord-Telegram-bridge
 </h1>
-
+<p align="center">
+<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge">
+ </p>
 A small and fast telegram to discord chat bridge, written in node 
 
 #### Setup:
