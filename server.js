@@ -53,7 +53,7 @@ var telegram = require("natsvora-telegram-bot-api");
 var telegramToken = process.env.TELEGRAM_BOT_TOKEN
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN
 var telegram_chat_id = process.env.TELEGRAM_CHAT_ID
-var discord_channel_id = process.env.DISCORD_CHANNEL_ID
+var discordChannelId = process.env.discordChannelId;
 
 const webhookClient = new Discord.WebhookClient(
   process.env.webhook_id,
@@ -78,7 +78,7 @@ client.login(DISCORD_TOKEN);
 client.on("message", message => {
   if (
     // the program currently check if the message's from a bot to check for duplicates. This isn't the best method but it's good enough. A webhook counts as a bot in the discord api, don't ask me why.
-    message.channel.id == discord_channel_id &&
+    message.channel.id === discordChannelId &&
     message.author.bot == false
   ) {
     let mentioned_usernames = []
