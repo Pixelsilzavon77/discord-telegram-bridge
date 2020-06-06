@@ -101,20 +101,29 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
 
 var photo_url = "";
 api.on("message", function(message) {
-  
-  if (message.chat.id == telegram_chat_id&& message.from.is_bot == false) {
-    // this part gets the user profile photos as the variable names suggest
-    var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
-    profilePhotos.then(function(data) {
-      // if user has a profile photo
-      if (data.total_count > 0) {
-        var file = api.getFile({ file_id: data.photos[0][0].file_id });
-        file.then(function(result) {
-          var file_path = result.file_path;
-          var profile_url = "https://api.telegram.org/file/bot" + telegram_token + "/" + file_path;
-          
-          // If the message contains a file or a photo. Telegram has 3 more data types, video, audio and location. Those are not implemented yet (the telegram api really just couldn't specify everything as a file then add a type attribute to it to make life easier)
-          if (message.document || message.photo) {
+  // console.log(message)
+  var file_path = ""
+  if (message.chat.id == telegram_chat_id && message.from.is_bot == false) {
+        // this part gets the user profile photos as the variable names suggest
+        let getProfilePic = new Promise(function(resolve, reject) {
+          var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
+          profilePhotos.then(function(data) {
+                // if user has a profile photo
+                if (data.total_count > 0) {
+                  var file = api.getFile({ file_id: data.photos[0][0].file_id });
+                  file.then(function(result) {
+                    var file_path = result.file_path;
+
+                    resolve("https://api.telegram.org/file/bot" + telegram_token + "/" + file_path)
+
+                  });
+                } else {
+                    //console.log("telegram pfp")
+                    resolve("https://telegram.org/img/t_logo.png");
+                  }
+                });
+        });
+        getProfilePic.then(function(profile_url) { if (message.document || message.photo) {
             if (message.document) {
               var document = api.getFile({ file_id: message.document.file_id });
               document.then(function(data) {
@@ -144,15 +153,7 @@ api.on("message", function(message) {
               username: message.from.first_name,
               avatarURL: profile_url
             });
-          }
-        });
-      } else {
-        // if the user has no profile picture, default to a telegram logo
-        webhookClient.send(message.text, {
-          username: message.from.first_name,
-          avatarURL: "https://telegram.org/img/t_logo.png"
-        });
+          } })
+         
       }
     });
-  }
-});
