@@ -1,5 +1,3 @@
-
-
 const fetch = require("node-fetch");
 
 const wakeUpDyno = (url, interval = 25, callback) => {
@@ -123,7 +121,9 @@ api.on("message", function(message) {
                   }
                 });
         });
-        getProfilePic.then(function(profile_url) { if (message.document || message.photo) {
+        getProfilePic.then(function(profile_url) { 
+          // if the message contains media
+          if (message.document || message.photo || message.sticker) {
             if (message.document) {
               var document = api.getFile({ file_id: message.document.file_id });
               document.then(function(data) {
@@ -136,6 +136,18 @@ api.on("message", function(message) {
                 });
               });
             }
+            if(message.sticker){
+              var sticker = api.getFile({ file_id: message.sticker.file_id })
+              sticker.then(function(data) {
+                var sticker_url =
+                  "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
+                webhookClient.send(message.caption, {
+                  username: message.from.first_name,
+                  avatarURL: profile_url,
+                  files: [sticker_url]
+                });
+              });
+          }
             if (message.photo) {
               var photo = api.getFile({ file_id: message.photo[0].file_id });
               photo.then(function(data) {
