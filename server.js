@@ -5,7 +5,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
     setTimeout(() => {
 
         try { 
-            console.log(`setTimeout called.`);
+            console.log("setTimeout called.");
             // HTTP GET request to the dyno's url
             fetch(url).then(() => console.log(`Fetching ${url}.`)); 
         }
@@ -50,7 +50,7 @@ const client = new Discord.Client();
 var telegram = require("natsvora-telegram-bot-api");
 
 // import env variables
-var telegram_token = process.env.TELEGRAM_BOT_TOKEN
+var telegramToken = process.env.TELEGRAM_BOT_TOKEN
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN
 var telegram_chat_id = process.env.TELEGRAM_CHAT_ID
 var discord_channel_id = process.env.DISCORD_CHANNEL_ID
@@ -61,7 +61,7 @@ const webhookClient = new Discord.WebhookClient(
 );
 // initializes the telegram bot and starts listening for updates (new messages)
 var api = new telegram({
-  token: telegram_token,
+  token: telegramToken,
   updates: {
     enabled: true
   }
@@ -112,7 +112,7 @@ api.on("message", function(message) {
                   file.then(function(result) {
                     var file_path = result.file_path;
 
-                    resolve("https://api.telegram.org/file/bot" + telegram_token + "/" + file_path)
+                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + file_path)
 
                   });
                 } else {
@@ -128,7 +128,7 @@ api.on("message", function(message) {
               var document = api.getFile({ file_id: message.document.file_id });
               document.then(function(data) {
                 var document_url =
-                  "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
@@ -140,7 +140,7 @@ api.on("message", function(message) {
               var sticker = api.getFile({ file_id: message.sticker.file_id })
               sticker.then(function(data) {
                 var sticker_url =
-                  "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
@@ -152,7 +152,7 @@ api.on("message", function(message) {
               var photo = api.getFile({ file_id: message.photo[0].file_id });
               photo.then(function(data) {
                 var photo_url =
-                  "https://api.telegram.org/file/bot" + telegram_token +"/" +data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
