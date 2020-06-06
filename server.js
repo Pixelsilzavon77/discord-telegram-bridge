@@ -52,7 +52,7 @@ var telegram = require("natsvora-telegram-bot-api");
 // import env variables
 var telegramToken = process.env.TELEGRAM_BOT_TOKEN
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN
-var telegram_chat_id = process.env.TELEGRAM_CHAT_ID
+var telegramChatId = process.env.TELEGRAM_CHAT_ID
 var discordChannelId = process.env.discordChannelId;
 
 const webhookClient = new Discord.WebhookClient(
@@ -90,7 +90,7 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
     // attachmentUrls is empty when there are no attachments so we can be just lazy
     var finalMessageContent = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
-      chat_id: telegram_chat_id,
+      chat_id: telegramChatId,
       text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentioned_usernames.join(" ")
     });
  
@@ -101,7 +101,7 @@ var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
   var file_path = ""
-  if (message.chat.id == telegram_chat_id && message.from.is_bot == false) {
+  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
