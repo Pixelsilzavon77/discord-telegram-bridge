@@ -112,7 +112,7 @@ api.on("message", function(message) {
                   file.then(function(result) {
                     var filePath = result.filePath;
 
-                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + filePath)
+                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + filePath);
 
                   });
                 } else {
@@ -127,12 +127,12 @@ api.on("message", function(message) {
             if (message.document) {
               var document = api.getFile({ fileId: message.document.fileId });
               document.then(function(data) {
-                var document_url =
+                var documentUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
-                  files: [document_url]
+                  files: [documentUrl]
                 });
               });
             }
