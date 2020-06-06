@@ -100,7 +100,7 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
 var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
-  var file_path = ""
+  var filePath = ""
   if (message.chat.id == telegramChatId && message.from.is_bot == false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
@@ -110,9 +110,9 @@ api.on("message", function(message) {
                 if (data.total_count > 0) {
                   var file = api.getFile({ fileId: data.photos[0][0].fileId });
                   file.then(function(result) {
-                    var file_path = result.file_path;
+                    var filePath = result.filePath;
 
-                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + file_path)
+                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + filePath)
 
                   });
                 } else {
@@ -128,7 +128,7 @@ api.on("message", function(message) {
               var document = api.getFile({ fileId: message.document.fileId });
               document.then(function(data) {
                 var document_url =
-                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
@@ -140,7 +140,7 @@ api.on("message", function(message) {
               var sticker = api.getFile({ fileId: message.sticker.fileId })
               sticker.then(function(data) {
                 var sticker_url =
-                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
@@ -152,7 +152,7 @@ api.on("message", function(message) {
               var photo = api.getFile({ fileId: message.photo[0].fileId });
               photo.then(function(data) {
                 var photoUrl =
-                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
