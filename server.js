@@ -5,7 +5,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
     setTimeout(() => {
 
         try { 
-            console.log(`setTimeout called.`);
+            console.log("setTimeout called.");
             // HTTP GET request to the dyno's url
             fetch(url).then(() => console.log(`Fetching ${url}.`)); 
         }
@@ -50,10 +50,10 @@ const client = new Discord.Client();
 var telegram = require("natsvora-telegram-bot-api");
 
 // import env variables
-var telegram_token = process.env.TELEGRAM_BOT_TOKEN
+var telegramToken = process.env.TELEGRAM_BOT_TOKEN
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN
-var telegram_chat_id = process.env.TELEGRAM_CHAT_ID
-var discord_channel_id = process.env.DISCORD_CHANNEL_ID
+var telegramChatId = process.env.TELEGRAM_CHAT_ID
+var discordChannelId = process.env.discordChannelId;
 
 const webhookClient = new Discord.WebhookClient(
   process.env.webhook_id,
@@ -61,7 +61,7 @@ const webhookClient = new Discord.WebhookClient(
 );
 // initializes the telegram bot and starts listening for updates (new messages)
 var api = new telegram({
-  token: telegram_token,
+  token: telegramToken,
   updates: {
     enabled: true
   }
@@ -78,41 +78,41 @@ client.login(DISCORD_TOKEN);
 client.on("message", message => {
   if (
     // the program currently check if the message's from a bot to check for duplicates. This isn't the best method but it's good enough. A webhook counts as a bot in the discord api, don't ask me why.
-    message.channel.id == discord_channel_id &&
-    message.author.bot == false
+    message.channel.id === discordChannelId &&
+    message.author.bot === false
   ) {
     let mentioned_usernames = []
 for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[1].username)}
-    var attachment_urls = []
+    var attachmentUrls = []
     for(let attachment of message.attachments){
-      attachment_urls.push(attachment[1].url)
+      attachmentUrls.push(attachment[1].url)
     }
-    // attachment_urls is empty when there are no attachments so we can be just lazy
-    var final_message_content = message.content.replace(/<@.*>/gi, '')
+    // attachmentUrls is empty when there are no attachments so we can be just lazy
+    var finalMessageContent = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
-      chat_id: telegram_chat_id,
-      text: message.author.username + ": "+final_message_content + " "+ attachment_urls.join(' ') + mentioned_usernames.join(" ")
+      chat_id: telegramChatId,
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentioned_usernames.join(" ")
     });
  
   }
 });
 
-var photo_url = "";
+var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
-  var file_path = ""
-  if (message.chat.id == telegram_chat_id && message.from.is_bot == false) {
+  var filePath = ""
+  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
           profilePhotos.then(function(data) {
                 // if user has a profile photo
                 if (data.total_count > 0) {
-                  var file = api.getFile({ file_id: data.photos[0][0].file_id });
+                  var file = api.getFile({ fileId: data.photos[0][0].fileId });
                   file.then(function(result) {
-                    var file_path = result.file_path;
+                    var filePath = result.filePath;
 
-                    resolve("https://api.telegram.org/file/bot" + telegram_token + "/" + file_path)
+                    resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + filePath);
 
                   });
                 } else {
@@ -125,22 +125,22 @@ api.on("message", function(message) {
           // if the message contains media
           if (message.document || message.photo || message.sticker) {
             if (message.document) {
-              var document = api.getFile({ file_id: message.document.file_id });
+              var document = api.getFile({ fileId: message.document.fileId });
               document.then(function(data) {
-                var document_url =
-                  "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
+                var documentUrl =
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
-                  files: [document_url]
+                  files: [documentUrl]
                 });
               });
             }
             if(message.sticker){
-              var sticker = api.getFile({ file_id: message.sticker.file_id })
+              var sticker = api.getFile({ fileId: message.sticker.fileId })
               sticker.then(function(data) {
                 var sticker_url =
-                  "https://api.telegram.org/file/bot" + telegram_token + "/" +  data.file_path;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
@@ -149,14 +149,14 @@ api.on("message", function(message) {
               });
           }
             if (message.photo) {
-              var photo = api.getFile({ file_id: message.photo[0].file_id });
+              var photo = api.getFile({ fileId: message.photo[0].fileId });
               photo.then(function(data) {
-                var photo_url =
-                  "https://api.telegram.org/file/bot" + telegram_token +"/" +data.file_path;
+                var photoUrl =
+                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
-                  files: [photo_url]
+                  files: [photoUrl]
                 });
               });
             }
