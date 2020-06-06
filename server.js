@@ -97,7 +97,7 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
   }
 });
 
-var photo_url = "";
+var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
   var file_path = ""
@@ -151,12 +151,12 @@ api.on("message", function(message) {
             if (message.photo) {
               var photo = api.getFile({ file_id: message.photo[0].file_id });
               photo.then(function(data) {
-                var photo_url =
+                var photoUrl =
                   "https://api.telegram.org/file/bot" + telegramToken +"/" +data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profile_url,
-                  files: [photo_url]
+                  files: [photoUrl]
                 });
               });
             }
