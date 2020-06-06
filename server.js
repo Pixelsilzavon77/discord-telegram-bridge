@@ -108,7 +108,7 @@ api.on("message", function(message) {
           profilePhotos.then(function(data) {
                 // if user has a profile photo
                 if (data.total_count > 0) {
-                  var file = api.getFile({ file_id: data.photos[0][0].file_id });
+                  var file = api.getFile({ fileId: data.photos[0][0].fileId });
                   file.then(function(result) {
                     var file_path = result.file_path;
 
@@ -125,7 +125,7 @@ api.on("message", function(message) {
           // if the message contains media
           if (message.document || message.photo || message.sticker) {
             if (message.document) {
-              var document = api.getFile({ file_id: message.document.file_id });
+              var document = api.getFile({ fileId: message.document.fileId });
               document.then(function(data) {
                 var document_url =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
@@ -137,7 +137,7 @@ api.on("message", function(message) {
               });
             }
             if(message.sticker){
-              var sticker = api.getFile({ file_id: message.sticker.file_id })
+              var sticker = api.getFile({ fileId: message.sticker.fileId })
               sticker.then(function(data) {
                 var sticker_url =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
@@ -149,7 +149,7 @@ api.on("message", function(message) {
               });
           }
             if (message.photo) {
-              var photo = api.getFile({ file_id: message.photo[0].file_id });
+              var photo = api.getFile({ fileId: message.photo[0].fileId });
               photo.then(function(data) {
                 var photoUrl =
                   "https://api.telegram.org/file/bot" + telegramToken +"/" +data.file_path;
