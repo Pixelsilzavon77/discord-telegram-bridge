@@ -88,10 +88,10 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
       attachmentUrls.push(attachment[1].url)
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
-    var final_message_content = message.content.replace(/<@.*>/gi, '')
+    var finalMessageContent = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
       chat_id: telegram_chat_id,
-      text: message.author.username + ": "+final_message_content + " "+ attachmentUrls.join(' ') + mentioned_usernames.join(" ")
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentioned_usernames.join(" ")
     });
  
   }
