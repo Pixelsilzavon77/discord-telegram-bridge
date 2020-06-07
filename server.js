@@ -79,9 +79,10 @@ client.login(DISCORD_TOKEN);
 client.on("message", message => {
   if (
     // the program currently check if the message's from a bot to check for duplicates. This isn't the best method but it's good enough. A webhook counts as a bot in the discord api, don't ask me why.
-    message.channel.id === discordChannelId &&
+    message.channel.id == discordChannelId &&
     message.author.bot === false
   ) {
+    //console.log(message)
     let mentionedUsernames = [];
 for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username);}
     var attachmentUrls = [];
@@ -90,6 +91,7 @@ for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
     var finalMessageContent = message.content.replace(/<@.*>/gi, "");
+    //console.log(message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(" ") + mentionedUsernames.join(" "))
     api.sendMessage({
       chat_id: telegramChatId,
       text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(" ") + mentionedUsernames.join(" ")
