@@ -1,11 +1,14 @@
 {
   "name": "discord-telegram-bridge",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple, small and fast discord to telegram bridge written in node.js",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
+  "bin": {
+   "discord-telegram-bridge": "server.js"
+ }
   "dependencies": {
     "discord.js": "^12.2.0",
     "express": "^4.17.1",
