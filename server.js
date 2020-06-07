@@ -82,8 +82,8 @@ client.on("message", message => {
     message.channel.id === discordChannelId &&
     message.author.bot === false
   ) {
-    let mentioned_usernames = []
-for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[1].username)}
+    let mentionedUsernames = []
+for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)}
     var attachmentUrls = []
     for(let attachment of message.attachments){
       attachmentUrls.push(attachment[1].url)
@@ -92,7 +92,7 @@ for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[
     var finalMessageContent = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
       chat_id: telegramChatId,
-      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentioned_usernames.join(" ")
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentionedUsernames.join(" ")
     });
  
   }
