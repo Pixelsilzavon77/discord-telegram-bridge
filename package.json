@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "bin": {
-   "discord-telegram-bridge": "./server.js"
+   "discord-telegram-bridge": "node ./server.js"
  },
   "dependencies": {
     "discord.js": "^12.2.0",
