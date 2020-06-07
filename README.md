@@ -9,8 +9,7 @@ A small and fast telegram to discord chat bridge, written in node
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/filcnaplo/discord-telegram-bridge)
 
-* Clone the github repo
-* Execute `npm install`
+* Execute `npm install -g discord-telegram-bridge`
 * Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
 * Set env variables: 
 
@@ -21,4 +20,4 @@ A small and fast telegram to discord chat bridge, written in node
 |TELEGRAM_CHAT_ID|string|The ChatId of the telegram group you want to bridge|
 |DISCORD_CHANNEL_ID|string|The Discord ChannelId of the channel you want to bridge|
 |webhook_id  and  webhook_token|string|Those are part of the webhook URL you copied.  webhook_id  is a 18 characters long int,  webhook_token is a ~70 chars long randomly generated string. Those are seperated by slashes in the url.|
-* Run `npm start` or `node server.js` and you're set!
+* Run `discord-telegram-bridge` and you're set!
