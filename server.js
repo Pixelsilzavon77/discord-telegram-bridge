@@ -140,12 +140,12 @@ api.on("message", function(message) {
             if(message.sticker){
               var sticker = api.getFile({ fileId: message.sticker.fileId })
               sticker.then(function(data) {
-                var sticker_url =
+                var stickerUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profileUrl,
-                  files: [sticker_url]
+                  files: [stickerUrl]
                 });
               });
           }
