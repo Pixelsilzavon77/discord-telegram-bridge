@@ -14,12 +14,12 @@ A small and fast telegram to discord chat bridge, written in node
 * Clone the github repo
 * Execute <kbd>npm install</kbd>
 * Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
-* Set env variables: <br> <br>
-| Env variable                   | type   | value                                                                                                                                                                                            |
-|--------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TELEGRAM_BOT_TOKEN             | string | you can get this by speaking with @BotFather on telegram and creating a new bot.                                                                                                                 |
-| DISCORD_TOKEN                  | string | the bot token for your Discord application. Create a new app at the  Discord Developer Portal , go to the bot section, click on Create a bot and copy the bot token it gives to you.             |
-| TELEGRAM_CHAT_ID               | string | The ChatId of the telegram group you want to bridge                                                                                                                                              |
-| DISCORD_CHANNEL_ID             | string | The Discord ChannelId of the channel you want to bridge                                                                                                                                          |
+* Set env variables: 
+| Env variable | type | value |
+|-|-|-|
+| TELEGRAM_BOT_TOKEN | string | you can get this by speaking with @BotFather on telegram and creating a new bot. |
+| DISCORD_TOKEN | string | the bot token for your Discord application. Create a new app at the  Discord Developer Portal , go to the bot section, click on Create a bot and copy the bot token it gives to you. |
+| TELEGRAM_CHAT_ID | string | The ChatId of the telegram group you want to bridge |
+| DISCORD_CHANNEL_ID | string | The Discord ChannelId of the channel you want to bridge |
 | webhook_id  and  webhook_token | string | Those are part of the webhook URL you copied.  webhook_id  is a 18 characters long int,  webhook_token is a ~70 chars long randomly generated string. Those are seperated by slashes in the url. |
 * Run <kbd>npm start</kbd> or <kbd>node server.js</kbd> and you're set!
