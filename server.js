@@ -92,7 +92,7 @@ for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1
     var finalMessageContent = message.content.replace(/<@.*>/gi, "");
     api.sendMessage({
       chat_id: telegramChatId,
-      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentionedUsernames.join(" ")
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(" ") + mentionedUsernames.join(" ")
     });
  
   }
@@ -101,8 +101,8 @@ for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1
 var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
-  var filePath = ""
-  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
+  var filePath = "";
+  if (message.chat.id === telegramChatId && message.from.is_bot === false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
