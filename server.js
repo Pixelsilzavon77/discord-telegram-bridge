@@ -113,7 +113,7 @@ api.on("message", function(message) {
                 if (data.total_count > 0) {
                   var file = api.getFile({ file_id: data.photos[0][0].file_id });
                   file.then(function(result) {
-                    var filePath = result.filePath;
+                    var filePath = result.file_path;
 
                     resolve("https://api.telegram.org/file/bot" + telegramToken + "/" + filePath);
 
@@ -131,7 +131,8 @@ api.on("message", function(message) {
               var document = api.getFile({ file_id: message.document.file_id });
               document.then(function(data) {
                 var documentUrl =
-                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
+                  console.log(documentUrl)
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profileUrl,
@@ -143,7 +144,7 @@ api.on("message", function(message) {
               var sticker = api.getFile({ file_id: message.sticker.file_id });
               sticker.then(function(data) {
                 var stickerUrl =
-                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
+                  "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profileUrl,
@@ -155,7 +156,7 @@ api.on("message", function(message) {
               var photo = api.getFile({ file_id: message.photo[0].file_id });
               photo.then(function(data) {
                 var photoUrl =
-                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.filePath;
+                  "https://api.telegram.org/file/bot" + telegramToken +"/" +data.file_path;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profileUrl,
