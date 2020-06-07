@@ -44,17 +44,17 @@ app.get("/", function(req, res) {
 });
 app.listen(PORT, () => {
     wakeUpDyno(DYNO_URL); // will start once server starts
-})
+});
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var telegram = require("natsvora-telegram-bot-api");
 
 // import env variables
-var telegramToken = process.env.TELEGRAM_BOT_TOKEN
-const DISCORD_TOKEN = process.env.DISCORD_TOKEN
-var telegramChatId = process.env.TELEGRAM_CHAT_ID
-var discordChannelId = process.env.discordChannelId;
+var telegramToken = process.env.TELEGRAM_BOT_TOKEN;
+const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
+var telegramChatId = process.env.TELEGRAM_CHAT_ID;
+var discordChannelId = process.env.DISCORD_CHANNEL_ID;
 
 const webhookClient = new Discord.WebhookClient(
   process.env.webhook_id,
