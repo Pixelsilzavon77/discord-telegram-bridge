@@ -102,14 +102,14 @@ var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
   var filePath = "";
-  if (message.chat.id === telegramChatId && message.from.is_bot === false) {
+  if (message.chat.id == telegramChatId && message.from.is_bot === false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
           profilePhotos.then(function(data) {
                 // if user has a profile photo
                 if (data.total_count > 0) {
-                  var file = api.getFile({ fileId: data.photos[0][0].fileId });
+                  var file = api.getFile({ file_id: data.photos[0][0].file_id });
                   file.then(function(result) {
                     var filePath = result.filePath;
 
@@ -126,7 +126,7 @@ api.on("message", function(message) {
           // if the message contains media
           if (message.document || message.photo || message.sticker) {
             if (message.document) {
-              var document = api.getFile({ fileId: message.document.fileId });
+              var document = api.getFile({ file_id: message.document.file_id });
               document.then(function(data) {
                 var documentUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
@@ -138,7 +138,7 @@ api.on("message", function(message) {
               });
             }
             if(message.sticker){
-              var sticker = api.getFile({ fileId: message.sticker.fileId });
+              var sticker = api.getFile({ file_id: message.sticker.file_id });
               sticker.then(function(data) {
                 var stickerUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
@@ -150,7 +150,7 @@ api.on("message", function(message) {
               });
           }
             if (message.photo) {
-              var photo = api.getFile({ fileId: message.photo[0].fileId });
+              var photo = api.getFile({ file_id: message.photo[0].file_id });
               photo.then(function(data) {
                 var photoUrl =
                   "https://api.telegram.org/file/bot" + telegramToken +"/" +data.filePath;
