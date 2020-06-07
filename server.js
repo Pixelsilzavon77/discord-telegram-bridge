@@ -133,7 +133,6 @@ api.on("message", function(message) {
               document.then(function(data) {
                 var documentUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.file_path;
-                  console.log(documentUrl)
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
                   avatarURL: profileUrl,
