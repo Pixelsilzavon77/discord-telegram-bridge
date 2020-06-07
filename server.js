@@ -86,10 +86,10 @@ client.on("message", message => {
 for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)}
     var attachmentUrls = [];
     for(let attachment of message.attachments){
-      attachmentUrls.push(attachment[1].url)
+      attachmentUrls.push(attachment[1].url);
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
-    var finalMessageContent = message.content.replace(/<@.*>/gi, '')
+    var finalMessageContent = message.content.replace(/<@.*>/gi, "");
     api.sendMessage({
       chat_id: telegramChatId,
       text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentionedUsernames.join(" ")
