@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fetch = require("node-fetch");
 
 const wakeUpDyno = (url, interval = 25, callback) => {
