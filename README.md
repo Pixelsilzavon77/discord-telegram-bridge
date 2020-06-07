@@ -1,6 +1,6 @@
 # Discord-Telegram-bridge
 
-![GitHub top language](https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2020?style=for-the-badge) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![npm](https://img.shields.io/npm/v/discord-telegram-bridge?style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2020?style=for-the-badge) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ebfcea5b1b2b4780a7b1054d7760ef8a)](https://app.codacy.com/manual/daaniiieel/discord-telegram-bridge?utm_source=github.com&utm_medium=referral&utm_content=daaniiieel/discord-telegram-bridge&utm_campaign=Badge_Grade_Settings)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![npm](https://img.shields.io/npm/v/discord-telegram-bridge?style=for-the-badge)
 
 A small and fast telegram to discord chat bridge, written in node 
 
