@@ -82,17 +82,17 @@ client.on("message", message => {
     message.channel.id === discordChannelId &&
     message.author.bot === false
   ) {
-    let mentionedUsernames = [];
+    let mentionedUsernames = []
 for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)}
-    var attachmentUrls = [];
+    var attachmentUrls = []
     for(let attachment of message.attachments){
-      attachmentUrls.push(attachment[1].url);
+      attachmentUrls.push(attachment[1].url)
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
-    var finalMessageContent = message.content.replace(/<@.*>/gi, "");
+    var finalMessageContent = message.content.replace(/<@.*>/gi, '')
     api.sendMessage({
       chat_id: telegramChatId,
-      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(" ") + mentionedUsernames.join(" ")
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentionedUsernames.join(" ")
     });
  
   }
@@ -101,8 +101,8 @@ for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1
 var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
-  var filePath = "";
-  if (message.chat.id === telegramChatId && message.from.is_bot === false) {
+  var filePath = ""
+  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
@@ -122,7 +122,7 @@ api.on("message", function(message) {
                   }
                 });
         });
-        getProfilePic.then(function(profile_url) { 
+        getProfilePic.then(function(profileUrl) { 
           // if the message contains media
           if (message.document || message.photo || message.sticker) {
             if (message.document) {
@@ -132,7 +132,7 @@ api.on("message", function(message) {
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
-                  avatarURL: profile_url,
+                  avatarURL: profileUrl,
                   files: [documentUrl]
                 });
               });
@@ -144,7 +144,7 @@ api.on("message", function(message) {
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
-                  avatarURL: profile_url,
+                  avatarURL: profileUrl,
                   files: [sticker_url]
                 });
               });
@@ -156,7 +156,7 @@ api.on("message", function(message) {
                   "https://api.telegram.org/file/bot" + telegramToken +"/" +data.filePath;
                 webhookClient.send(message.caption, {
                   username: message.from.first_name,
-                  avatarURL: profile_url,
+                  avatarURL: profileUrl,
                   files: [photoUrl]
                 });
               });
@@ -164,9 +164,9 @@ api.on("message", function(message) {
           } else {
             webhookClient.send(message.text, {
               username: message.from.first_name,
-              avatarURL: profile_url
+              avatarURL: profileUrl
             });
-          } })
+          } });
          
       }
     });
