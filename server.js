@@ -46,6 +46,7 @@ app.listen(PORT, () => {
     wakeUpDyno(DYNO_URL); // will start once server starts
 });
 
+// import modules
 const Discord = require("discord.js");
 const client = new Discord.Client();
 var telegram = require("natsvora-telegram-bot-api");
