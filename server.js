@@ -82,17 +82,17 @@ client.on("message", message => {
     message.channel.id === discordChannelId &&
     message.author.bot === false
   ) {
-    let mentionedUsernames = []
-for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)}
-    var attachmentUrls = []
+    let mentionedUsernames = [];
+for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)};
+    var attachmentUrls = [];
     for(let attachment of message.attachments){
-      attachmentUrls.push(attachment[1].url)
+      attachmentUrls.push(attachment[1].url);
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
-    var finalMessageContent = message.content.replace(/<@.*>/gi, '')
+    var finalMessageContent = message.content.replace(/<@.*>/gi, "");
     api.sendMessage({
       chat_id: telegramChatId,
-      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(' ') + mentionedUsernames.join(" ")
+      text: message.author.username + ": "+finalMessageContent + " "+ attachmentUrls.join(" ") + mentionedUsernames.join(" ")
     });
  
   }
@@ -101,8 +101,8 @@ for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1
 var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
-  var filePath = ""
-  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
+  var filePath = "";
+  if (message.chat.id === telegramChatId && message.from.is_bot === false) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
