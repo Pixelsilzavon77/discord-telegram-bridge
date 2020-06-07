@@ -1,9 +1,7 @@
-<h1 align="center"> 
-Discord-Telegram-bridge
-</h1>
-<p align="center">
-<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge"> <img src="https://app.codacy.com/project/badge/Grade/baf2c94a5d0c43829481b703cb19bcc1"> <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge"> <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/daaniiieel/discord-telegram-bridge?style=for-the-badge"> 
- </p>
+# Discord-Telegram-bridge
+
+![GitHub top language](https://img.shields.io/github/languages/top/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![Maintenance](https://img.shields.io/maintenance/yes/2020?style=for-the-badge) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/daaniiieel/discord-telegram-bridge?style=for-the-badge) ![npm](https://img.shields.io/npm/v/discord-telegram-bridge?style=for-the-badge)
+
 A small and fast telegram to discord chat bridge, written in node 
 
 #### Setup
@@ -12,7 +10,7 @@ A small and fast telegram to discord chat bridge, written in node
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/filcnaplo/discord-telegram-bridge)
 
 * Clone the github repo
-* Execute <kbd>npm install</kbd>
+* Execute `npm install`
 * Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
 * Set env variables: 
 
@@ -23,4 +21,4 @@ A small and fast telegram to discord chat bridge, written in node
 | TELEGRAM_CHAT_ID | string | The ChatId of the telegram group you want to bridge |
 | DISCORD_CHANNEL_ID | string | The Discord ChannelId of the channel you want to bridge |
 | webhook_id  and  webhook_token | string | Those are part of the webhook URL you copied.  webhook_id  is a 18 characters long int,  webhook_token is a ~70 chars long randomly generated string. Those are seperated by slashes in the url. |
-* Run <kbd>npm start</kbd> or <kbd>node server.js</kbd> and you're set!
+* Run `npm start` or `node server.js` and you're set!
