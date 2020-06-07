@@ -6,7 +6,7 @@ Discord-Telegram-bridge
  </p>
 A small and fast telegram to discord chat bridge, written in node 
 
-#### Setup:
+#### Setup
 > If you want to run it on heroku, you can just click the button below. 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/filcnaplo/discord-telegram-bridge)
