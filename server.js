@@ -138,7 +138,7 @@ api.on("message", function(message) {
               });
             }
             if(message.sticker){
-              var sticker = api.getFile({ fileId: message.sticker.fileId })
+              var sticker = api.getFile({ fileId: message.sticker.fileId });
               sticker.then(function(data) {
                 var stickerUrl =
                   "https://api.telegram.org/file/bot" + telegramToken + "/" +  data.filePath;
