@@ -82,9 +82,9 @@ client.on("message", message => {
     message.channel.id === discordChannelId &&
     message.author.bot === false
   ) {
-    let mentionedUsernames = []
+    let mentionedUsernames = [];
 for(let mention of message.mentions.users){mentionedUsernames.push("@"+mention[1].username)}
-    var attachmentUrls = []
+    var attachmentUrls = [];
     for(let attachment of message.attachments){
       attachmentUrls.push(attachment[1].url)
     }
