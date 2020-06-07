@@ -15,6 +15,7 @@ A small and fast telegram to discord chat bridge, written in node
 * Execute <kbd>npm install</kbd>
 * Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
 * Set env variables: 
+
 | Env variable | type | value |
 |-|-|-|
 | TELEGRAM_BOT_TOKEN | string | you can get this by speaking with @BotFather on telegram and creating a new bot. |
