@@ -12,7 +12,12 @@
 //| | | | | |_____| |_) | |  | | (_| | (_| |  __/
 //|_| |_| |_|     |_.__/|_|  |_|\__,_|\__, |\___|
 //                                    |___/      
-console.clear()
+
+//clear console before start -- useful for debugging, disabled from ver 1.0.1
+//console.clear()
+
+// detect if app is running on heroku to reduce not needed network traffic
+if(process.env._.indexOf("heroku") !== -1){
 const fetch = require("node-fetch");
 
 const wakeUpDyno = (url, interval = 25, callback) => {
@@ -41,7 +46,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
 
           }, milliseconds);
 };
-
+}
 // heroku specific
 const express = require("express");
 
