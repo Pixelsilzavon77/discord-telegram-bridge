@@ -17,7 +17,6 @@
 //console.clear()
 
 // detect if app is running on heroku to reduce not needed network traffic
-if(process.env._.indexOf("heroku") !== -1){
 const fetch = require("node-fetch");
 
 const wakeUpDyno = (url, interval = 25, callback) => {
@@ -46,6 +45,11 @@ const wakeUpDyno = (url, interval = 25, callback) => {
 
           }, milliseconds);
 };
+
+if(process.env._.indexOf("heroku") !== -1){
+app.listen(PORT, () => {
+    wakeUpDyno(DYNO_URL); // will start once server starts
+  });
 } else {console.log("Not running on heroku")}
 // heroku specific
 const express = require("express");
@@ -57,9 +61,6 @@ const app = express();
 app.get("/", function(req, res) {
   res.send("Hello world! you have reached the secret inner workings of the FILC BOT");
 });
-app.listen(PORT, () => {
-    wakeUpDyno(DYNO_URL); // will start once server starts
-  });
 
 // import modules
 const Discord = require("discord.js");
