@@ -56,20 +56,21 @@ const wakeUpDyno = (url, interval = 25, callback) => {
 // import modules
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const Telegram = require('telegraf/telegram');
-const polka = require('polka');
+const Telegram = require("telegraf/telegram");
+const polka = require("polka");
+const { Telegraf } = require("telegraf");
 
 polka()
-    .get('/', (req, res) => {
-        res.end("Hello world!")
+    .get("/", (req, res) => {
+        res.end("Hello world!");
     })
-    .listen(PORT, err => {
-        if (err) throw err;
-        console.log(`> Running on localhost:` + PORT);
+    .listen(PORT, (err) => {
+        if (err){throw err};
+        console.log("> Running on localhost:" + PORT);
         if (process.env._ && process.env._.indexOf("heroku") !== -1) {
-            console.log("> Starting wakeUpDyno")
-            wakeUpDyno(DYNO_URL)
-        } else { console.log("> Not running on heroku") }
+            console.log("> Starting wakeUpDyno");
+            wakeUpDyno(DYNO_URL);
+        } else { console.log("> Not running on heroku"); }
     });
 
 
@@ -79,7 +80,7 @@ const webhookClient = new Discord.WebhookClient(
 );
 
 // initializes the telegram bot and starts listening for updates (new messages)
-const { Telegraf } = require('telegraf')
+
 const bot = new Telegraf(telegramToken)
 client.once("ready", () => {
     console.log("Discord bot ready!");
@@ -89,7 +90,7 @@ client.once("ready", () => {
 client.login(DISCORD_TOKEN);
 
 // if the discord bot receives a message
-client.on("message", message => {
+client.on("message", (message) => {
     if (
         // the program currently check if the message's from a bot to check for duplicates. This isn't the best method but it's good enough. A webhook counts as a bot in the discord api, don't ask me why.
         message.channel.id == discordChannelId &&
@@ -112,8 +113,8 @@ client.on("message", message => {
 
 var photoUrl = "";
 bot.on("message", function(message) {
-    const messageUpdate = message.update
-    const updateMsg = message.update.message
+    const messageUpdate = message.update;
+    const updateMsg = message.update.message;
     var filePath = "";
     if (updateMsg.chat.id == telegramChatId && updateMsg.from.is_bot === false) {
         // this part gets the user profile photos as the variable names suggest
@@ -170,4 +171,4 @@ bot.on("message", function(message) {
 
     }
 });
-bot.launch()
+bot.launch();
