@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "discord.js": "^12.2.0",
-    "express": "^4.17.1",
     "node-fetch": "^2.6.0",
+    "polka": "^0.5.2",
     "telegraf": "^3.38.0"
   },
   "repository": {
