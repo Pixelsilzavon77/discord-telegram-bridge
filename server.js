@@ -46,7 +46,7 @@ const wakeUpDyno = (url, interval = 25, callback) => {
 
           }, milliseconds);
 };
-}
+} else {console.log("Not running on heroku")}
 // heroku specific
 const express = require("express");
 
