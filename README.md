@@ -21,3 +21,13 @@ A small and fast telegram to discord chat bridge, written in node
 |`DISCORD_CHANNEL_ID`|string|The Discord ChannelId of the channel you want to bridge.|
 |`webhook_id`  and  `webhook_token`|string|Those are part of the webhook URL you copied.  webhook_id  is a 18 characters long int,  webhook_token is a ~70 chars long randomly generated string. Those are seperated by slashes in the url.|
 * Run `discord-telegram-bridge` and you're set!
+
+#### Contributing
+> Wondering what to contribute? The project has a codacy page at [https://app.codacy.com/manual/daaniiieel/discord-telegram-bridge/dashboard](https://app.codacy.com/manual/daaniiieel/discord-telegram-bridge/dashboard). On the issues tab, you can see all the code quality (mostly code style) issues we have. 
+* Fork this github repo
+* Clone your fork to your machine
+* Execute `npm install` **without** the `--production` flag
+* Write code
+* Once done, `git add *` then  `git cz`. This uses Commitizen (installed automatically as a devDependency with `npm install`) to write beautiful commit messages
+* Make a pull request from your fork to this repo
+* After reviewing it, your code will be merged
