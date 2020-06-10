@@ -136,13 +136,17 @@ bot.on("message", function(message) {
         getProfilePic.then(function(profileUrl) {
             // if the message contains media
             if (updateMsg.document || updateMsg.photo || updateMsg.sticker) {
-                bot.telegram.getFileLink(updateMsg.document.file_id).then(function(photoUrl) {
-                    webhookClient.send(updateMsg.caption, {
-                        username: updateMsg.from.first_name,
-                        avatarURL: profileUrl,
-                        files: [photoUrl]
+                if (updateMsg.document) {
+                    console.log("❯ MESSAGE CONTAINS DOCUMENT")
+                    bot.telegram.getFileLink(updateMsg.document.file_id).then(function(photoUrl) {
+                        webhookClient.send(updateMsg.caption, {
+                            username: updateMsg.from.first_name,
+                            avatarURL: profileUrl,
+                            files: [photoUrl]
+                        });
                     });
-                });
+                }
+               
                 if (updateMsg.sticker) {
                     bot.telegram.getFileLink(updateMsg.sticker.file_id).then(function(photoUrl) {
                         webhookClient.send(updateMsg.caption, {
@@ -153,6 +157,7 @@ bot.on("message", function(message) {
                     });
                 }
                 if (updateMsg.photo) {
+                    console.log("❯ MESSAGE CONTAINS PHOTO")
                     bot.telegram.getFileLink(updateMsg.photo[0].file_id).then(function(photoUrl) {
                         webhookClient.send(updateMsg.caption, {
                             username: updateMsg.from.first_name,
