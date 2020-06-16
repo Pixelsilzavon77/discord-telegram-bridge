@@ -15,15 +15,15 @@ npm install -g discord-telegram-bridge
 
 ## Usage
 
--   Create a Discord bot.
--   Create a Telegram bot by talking to botFather
--   Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
+- Create a Discord bot.
+- Create a Telegram bot by talking to botFather
+- Create a Discord webhook. You can do this by going to Server settings -> Webhooks. Copy the URL, you'll need it later.
 
 > If you want to run it on heroku, you can just click the button below.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/filcnaplo/discord-telegram-bridge)
 
--   Set env variables:
+- Set env variables:
 
 | Env variable                     | type   | value                                                                                                                                                                                         |
 | -------------------------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -41,7 +41,7 @@ discord-telegram-bridge
 
 👤 **Daniel Vanko**
 
--   Github: [@daaniiieel](https://github.com/daaniiieel)
+- Github: [@daaniiieel](https://github.com/daaniiieel)
 
 ## 🤝 Contributing
 

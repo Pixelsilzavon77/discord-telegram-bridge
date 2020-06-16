@@ -3,18 +3,18 @@
 //     _ _                       _       _       _
 //  __| (_)___  ___ ___  _ __ __| |     | |_ ___| | ___  __ _ _ __ __ _
 // / _` | / __|/ __/ _ \| '__/ _` |_____| __/ _ \ |/ _ \/ _` | '__/ _` |
-//| (_| | \__ \ (_| (_) | | | (_| |_____| ||  __/ |  __/ (_| | | | (_| |
+// | (_| | \__ \ (_| (_) | | | (_| |_____| ||  __/ |  __/ (_| | | | (_| |
 // \__,_|_|___/\___\___/|_|  \__,_|      \__\___|_|\___|\__, |_|  \__,_|
 //                                                      |___/
 //                 _          _     _
 // _ __ ___       | |__  _ __(_) __| | __ _  ___
-//| '_ ` _ \ _____| '_ \| '__| |/ _` |/ _` |/ _ \
-//| | | | | |_____| |_) | |  | | (_| | (_| |  __/
-//|_| |_| |_|     |_.__/|_|  |_|\__,_|\__, |\___|
+// | '_ ` _ \ _____| '_ \| '__| |/ _` |/ _` |/ _ \
+// | | | | | |_____| |_) | |  | | (_| | (_| |  __/
+// |_| |_| |_|     |_.__/|_|  |_|\__,_|\__, |\___|
 //                                    |___/
 
-//clear console before start -- useful for debugging, disabled from ver 1.0.1
-//console.clear()
+// clear console before start -- useful for debugging, disabled from ver 1.0.1
+// console.clear()
 
 // import env variables
 var telegramToken = process.env.TELEGRAM_BOT_TOKEN;
@@ -97,12 +97,12 @@ client.on("message", (message) => {
     message.channel.id == discordChannelId &&
     message.author.bot === false
   ) {
-    let mentionedUsernames = [];
-    for (let mention of message.mentions.users) {
+    const mentionedUsernames = [];
+    for (const mention of message.mentions.users) {
       mentionedUsernames.push("@" + mention[1].username);
     }
     var attachmentUrls = [];
-    for (let attachment of message.attachments) {
+    for (const attachment of message.attachments) {
       attachmentUrls.push(attachment[1].url);
     }
     // attachmentUrls is empty when there are no attachments so we can be just lazy
@@ -126,7 +126,7 @@ bot.on("message", function (message) {
   var filePath = "";
   if (updateMsg.chat.id == telegramChatId && updateMsg.from.is_bot === false) {
     // this part gets the user profile photos as the variable names suggest
-    let getProfilePic = new Promise(function (resolve, reject) {
+    const getProfilePic = new Promise(function (resolve, reject) {
       var profilePhotos = bot.telegram.getUserProfilePhotos(updateMsg.from.id);
       profilePhotos.then(function (data) {
         // if user has a profile photo
